@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">FinMonitor</string>
+    <string name="cadastro_produto">Cadastro de Produto</string>
+    <string name="nome">Nome</string>
+    <string name="tipo_produto">Tipo do produto</string>
+    <string name="text_isin">Código Isin(Identificação do produto)</string>
+    <string name="text_risco">Risco do produto</string>
+    <string name="ra_baixo">Baixo</string>
+    <string name="ra_medio">Médio</string>
+    <string name="ra_alto">Alto</string>
+    <string name="limpar">Limpar</string>
+    <string name="salvar">Salvar</string>
+    <string name="ativo">Produto ativado</string>
+    <string name="nome_vazio">Campo nome não pode ser vazio!</string>
+    <string name="codigo_vazio">O campo código não pode ser vazio!</string>
+    <string name="risco_produto">É necessário indicar o grau de risco do produto!</string>
+    <string name="campos_reiniciados">Campos reiniciados!</string>
+    <string name="sucesso">Operação realizada com sucesso!</string>
 </resources>
