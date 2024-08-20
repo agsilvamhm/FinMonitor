@@ -88,7 +88,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
          if (radioGroup.getCheckedRadioButtonId() == -1){
              Toast.makeText(this, R.string.risco_produto, Toast.LENGTH_SHORT).show();
-             radioGroup.requestFocus();
+             //radioGroup.requestFocus(1);
              return;
          }
         Toast.makeText(this, R.string.sucesso, Toast.LENGTH_LONG).show();

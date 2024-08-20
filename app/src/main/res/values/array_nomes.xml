@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nomes">
+        <item>Ações - Petrobras</item>
+        <item>Títulos Públicos</item>
+        <item>BTG Pactual Fundo de Fundos</item>
+        <item>CDB do Banco Inter</item>
+        <item>Debênture da Eletrobras</item>
+        <item>Fundo Verde (JGP Verde FIC FIM)</item>
+        <item>Conta Poupança da Caixa Econômica Federal</item>
+        <item>ABitcoin (BTC)</item>
+        <item>ETFs (Exchange-Traded Funds) </item>
+        <item>Previdência Privada </item>
+    </string-array>
+
+    <string-array name="codigos">
+         <item>PETR4</item>
+         <item>Selic</item>
+         <item>BCFF11</item>
+         <item>Inter</item>
+         <item>FIIs</item>
+         <item>CDB</item>
+         <item>FIC FIM</item>
+         <item>poupança</item>
+         <item>BOVA11</item>
+         <item>VGBL</item>
+    </string-array>
+
+    <integer-array name="tipo_risco">
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
+
+    <string-array name="tipos">
+        <item>Ações</item>
+        <item>Títulos públicos</item>
+        <item>Fundos Imobiliários</item>
+        <item>CDB</item>
+        <item>Debêntures</item>
+        <item>Fundos de investimentos</item>
+        <item>Poupança</item>
+        <item>Criptomoedas</item>
+        <item>ETFs</item>
+        <item>Previdência privada</item>
+    </string-array>
+</resources>

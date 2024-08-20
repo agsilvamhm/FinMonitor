@@ -16,4 +16,6 @@
     <string name="risco_produto">É necessário indicar o grau de risco do produto!</string>
     <string name="campos_reiniciados">Campos reiniciados!</string>
     <string name="sucesso">Operação realizada com sucesso!</string>
+    <string name="foi_clicado">" foi clicado!"</string>
+    <string name="o_produto">"O produto: "</string>
 </resources>
