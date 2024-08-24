@@ -22,6 +22,10 @@
     <string name="curso">Curso:</string>
     <string name="utfpr">Universidade Tecnológica Federal do Paraná</string>
     <string name="email">E-mail:</string>
-    <string name="descricao_aplicativo">Acompanhamento dos investimentos realizados por operadoras.</string>
+    <string name="descricao_aplicativo">Este aplicativo visa substituir uma planilha para que seja feito o acompanhamento dos investimentos bancários.</string>
     <string name="sobre">Sobre</string>
+    <string name="nome_curso">Tecnologia Java</string>
+    <string name="nome__aluno">Adalberto Gonçalves da Silva</string>
+    <string name="email_aluno">adalbertosilva@alunos.utfpr.edu.br</string>
+    <string name="texto_sobre">Controle de investimentos financeiros por produto e intituições.</string>
 </resources>
