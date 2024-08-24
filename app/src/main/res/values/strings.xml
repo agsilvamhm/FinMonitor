@@ -18,4 +18,10 @@
     <string name="sucesso">Operação realizada com sucesso!</string>
     <string name="foi_clicado">" foi clicado!"</string>
     <string name="o_produto">"O produto: "</string>
+    <string name="nome_aluno">Nome do Aluno:</string>
+    <string name="curso">Curso:</string>
+    <string name="utfpr">Universidade Tecnológica Federal do Paraná</string>
+    <string name="email">E-mail:</string>
+    <string name="descricao_aplicativo">Acompanhamento dos investimentos realizados por operadoras.</string>
+    <string name="sobre">Sobre</string>
 </resources>
