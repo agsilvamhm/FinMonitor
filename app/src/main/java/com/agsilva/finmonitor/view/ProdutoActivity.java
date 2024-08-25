@@ -1,5 +1,6 @@
 package com.agsilva.finmonitor.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,21 +12,34 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.agsilva.finmonitor.R;
+import com.agsilva.finmonitor.modelo.Produto;
+import com.agsilva.finmonitor.modelo.ProdutoRisco;
+import com.agsilva.finmonitor.modelo.TipoProduto;
 
 import java.util.ArrayList;
 
 public class ProdutoActivity extends AppCompatActivity {
 
-    public static void nova(AppCompatActivity activity){
+    public static void nova(AppCompatActivity activity, ActivityResultLauncher<Intent> laucher){
         Intent intent = new Intent(activity, ProdutoActivity.class);
-        activity.startActivity(intent);
+   //     activity.startActivity(intent);
+    //    Intent intent = new Intent(this, ProdutoActivity.class);
+        laucher.launch(intent);
     }
+
+    public static final String NOME = "NOME";
+    public static final String CODIGO = "CODIGO";
+  //  public static final ProdutoRisco RISCO = ProdutoRisco.valueOf("RISCO");
+  //  public static final String TIPO = "TIPO";
+  //  public static final Boolean ATIVO = Boolean.valueOf("ATIVO");
+   // public Produto = new Produto();
 
     private Spinner spinnerTipo;
     private EditText editNome, editCodigo;
@@ -97,7 +111,42 @@ public class ProdutoActivity extends AppCompatActivity {
              //radioGroup.requestFocus(1);
              return;
          }
-        Toast.makeText(this, R.string.sucesso, Toast.LENGTH_LONG).show();
 
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        ProdutoRisco risco;
+        TipoProduto tipo;
+        tipo = new TipoProduto(spinnerTipo.getSelectedItem().toString());
+
+        switch (selectedId) {
+            case 1:
+                risco = ProdutoRisco.BAIXO;
+                break;
+            case 2:
+                risco = ProdutoRisco.MEDIO;
+                break;
+            default:
+                // Definir um valor padrão ou lançar uma exceção
+                risco = ProdutoRisco.ALTO;
+                break;
+
+        }
+
+        Produto produto = new Produto(editNome.getText().toString(),editCodigo.getText().toString(), risco, tipo, checkBox.isChecked());
+        Intent intent = new Intent();
+  //      intent.putExtra("produto", produto);
+        intent.putExtra(NOME, editNome.getText().toString());
+        intent.putExtra(CODIGO, editCodigo.getText().toString());
+ //       intent.putExtra(String.valueOf(RISCO), risco);
+ //       intent.putExtra(TIPO, tipo.toString());
+ //       intent.putExtra(String.valueOf(ATIVO), checkBox.isChecked());
+
+        Toast.makeText(this, R.string.sucesso, Toast.LENGTH_LONG).show();
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+    }
+
+    public void cancelar(View view){
+          setResult(Activity.RESULT_CANCELED);
+          finish();
     }
 }

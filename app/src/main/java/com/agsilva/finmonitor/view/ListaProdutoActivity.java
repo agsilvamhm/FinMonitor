@@ -1,5 +1,6 @@
 package com.agsilva.finmonitor.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,6 +35,9 @@ public class ListaProdutoActivity extends AppCompatActivity {
     }
 
     private ListView listaViewProdutos;
+    private ArrayList<Produto> listaProdutos ;
+    private  ArrayAdapter<Produto> listaAdapter ;
+ // ProdutoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +59,39 @@ public class ListaProdutoActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), getString(R.string.o_produto) + produto.getNome() + getString(R.string.foi_clicado), Toast.LENGTH_LONG).show();
             }
         });
-
         popularLista();
     }
 
+    ActivityResultLauncher<Intent> laucherNovoProduto = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Intent intent = result.getData();
+                        Bundle bundle = intent.getExtras();
+                        if (bundle != null){
+                            String nome = bundle.getString(ProdutoActivity.NOME);
+                            String codigo = bundle.getString(ProdutoActivity.CODIGO);
+                           // String risco = bundle.getString(String.valueOf(ProdutoActivity.RISCO));
+                          //  String tipo = bundle.getString(ProdutoActivity.TIPO);
+                          //  String ativo = bundle.getString(String.valueOf(ProdutoActivity.ATIVO));
+                            Produto produto = new Produto(nome,codigo);
+                          //  Produto produto = (Produto) intent.getSerializableExtra("produto");
+                            listaProdutos.add(produto);
+                            listaAdapter.notifyDataSetChanged();
+                            //adapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+            });
+
     private void popularLista(){
-        String[] nomes = getResources().getStringArray(R.array.nomes);
+        listaProdutos = new ArrayList<>();
+        listaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaProdutos);
+       // adapter = new ProdutoAdapter(this, listaProdutos);
+        listaViewProdutos.setAdapter(listaAdapter);
+
+     /*   String[] nomes = getResources().getStringArray(R.array.nomes);
         String[] codigos = getResources().getStringArray(R.array.codigos);
         String[] tipos = getResources().getStringArray(R.array.tipos);
         int[] risco = getResources().getIntArray(R.array.tipo_risco);
@@ -70,10 +105,13 @@ public class ListaProdutoActivity extends AppCompatActivity {
 
       //  ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtos);
         ProdutoAdapter adapter = new ProdutoAdapter(this, produtos);
-        listaViewProdutos.setAdapter(adapter);
+        listaViewProdutos.setAdapter(adapter); */
     }
 
     public void menuCadastro(View view){
-        ProdutoActivity.nova(this);
+    //    Intent intent = new Intent(this, ProdutoActivity.class);
+      //  laucherNovoProduto.launch(intent);
+        //ProdutoActivity.nova(this);
+        ProdutoActivity.nova(this, laucherNovoProduto);
     }
 }

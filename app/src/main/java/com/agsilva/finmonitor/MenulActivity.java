@@ -31,9 +31,9 @@ public class MenulActivity extends AppCompatActivity {
         SobreActivity.nova(this);
     }
 
-    public void menuCadastro(View view){
-        ProdutoActivity.nova(this);
-    }
+ //   public void menuCadastro(View view){
+ //       ProdutoActivity.nova(this);
+ //   }
 
     public void menuListaProduto(View view){
         ListaProdutoActivity.nova(this);

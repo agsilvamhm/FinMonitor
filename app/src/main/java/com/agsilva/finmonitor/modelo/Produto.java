@@ -1,6 +1,8 @@
 package com.agsilva.finmonitor.modelo;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto  {
     private String nome;
     private String codigo;
     private ProdutoRisco risco;
@@ -13,6 +15,11 @@ public class Produto {
         this.risco = risco;
         this.tipo = tipo;
         this.ativado = ativado;
+    }
+
+    public Produto(String nome, String codigo){
+        this.nome = nome;
+        this.codigo = codigo;
     }
 
     public String getNome() {
