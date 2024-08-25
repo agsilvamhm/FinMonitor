@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -29,22 +30,14 @@ public class ProdutoActivity extends AppCompatActivity {
 
     public static void nova(AppCompatActivity activity, ActivityResultLauncher<Intent> laucher){
         Intent intent = new Intent(activity, ProdutoActivity.class);
-   //     activity.startActivity(intent);
-    //    Intent intent = new Intent(this, ProdutoActivity.class);
         laucher.launch(intent);
     }
-
-    public static final String NOME = "NOME";
-    public static final String CODIGO = "CODIGO";
-  //  public static final ProdutoRisco RISCO = ProdutoRisco.valueOf("RISCO");
-  //  public static final String TIPO = "TIPO";
-  //  public static final Boolean ATIVO = Boolean.valueOf("ATIVO");
-   // public Produto = new Produto();
 
     private Spinner spinnerTipo;
     private EditText editNome, editCodigo;
     private RadioGroup radioGroup;
     private CheckBox checkBox;
+    private ProdutoRisco risco ; //= ProdutoRisco.BAIXO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,39 +99,27 @@ public class ProdutoActivity extends AppCompatActivity {
              return;
          }
 
-         if (radioGroup.getCheckedRadioButtonId() == -1){
+         int itemSelecionado = radioGroup.getCheckedRadioButtonId();
+
+         if (itemSelecionado == -1){
              Toast.makeText(this, R.string.risco_produto, Toast.LENGTH_SHORT).show();
-             //radioGroup.requestFocus(1);
              return;
+         } else {
+             RadioButton riscoSelecionado = findViewById(itemSelecionado);
+             if (riscoSelecionado.getText().equals("Baixo")) {
+                 risco = ProdutoRisco.BAIXO;
+             } else if(riscoSelecionado.getText().equals("Médio")) {
+                 risco = ProdutoRisco.MEDIO;
+             } else {
+                 risco = ProdutoRisco.ALTO;
+             }
          }
 
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        ProdutoRisco risco;
-        TipoProduto tipo;
-        tipo = new TipoProduto(spinnerTipo.getSelectedItem().toString());
-
-        switch (selectedId) {
-            case 1:
-                risco = ProdutoRisco.BAIXO;
-                break;
-            case 2:
-                risco = ProdutoRisco.MEDIO;
-                break;
-            default:
-                // Definir um valor padrão ou lançar uma exceção
-                risco = ProdutoRisco.ALTO;
-                break;
-
-        }
+        TipoProduto tipo = new TipoProduto(spinnerTipo.getSelectedItem().toString());
 
         Produto produto = new Produto(editNome.getText().toString(),editCodigo.getText().toString(), risco, tipo, checkBox.isChecked());
         Intent intent = new Intent();
-  //      intent.putExtra("produto", produto);
-        intent.putExtra(NOME, editNome.getText().toString());
-        intent.putExtra(CODIGO, editCodigo.getText().toString());
- //       intent.putExtra(String.valueOf(RISCO), risco);
- //       intent.putExtra(TIPO, tipo.toString());
- //       intent.putExtra(String.valueOf(ATIVO), checkBox.isChecked());
+        intent.putExtra("produto", produto);
 
         Toast.makeText(this, R.string.sucesso, Toast.LENGTH_LONG).show();
         setResult(Activity.RESULT_OK, intent);

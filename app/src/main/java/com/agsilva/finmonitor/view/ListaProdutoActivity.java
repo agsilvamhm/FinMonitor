@@ -36,7 +36,6 @@ public class ListaProdutoActivity extends AppCompatActivity {
 
     private ListView listaViewProdutos;
     private ArrayList<Produto> listaProdutos ;
-    private  ArrayAdapter<Produto> listaAdapter ;
     private ProdutoAdapter adapter;
 
     @Override
@@ -70,16 +69,8 @@ public class ListaProdutoActivity extends AppCompatActivity {
                         Intent intent = result.getData();
                         Bundle bundle = intent.getExtras();
                         if (bundle != null){
-                            String nome = bundle.getString(ProdutoActivity.NOME);
-                            String codigo = bundle.getString(ProdutoActivity.CODIGO);
-                           // String risco = bundle.getString(String.valueOf(ProdutoActivity.RISCO));
-                          //  String tipo = bundle.getString(ProdutoActivity.TIPO);
-                          //  String ativo = bundle.getString(String.valueOf(ProdutoActivity.ATIVO));
-                            Produto produto = new Produto(nome,codigo, ProdutoRisco.ALTO, new TipoProduto("Tese"), true);
-
-                          //  Produto produto = (Produto) intent.getSerializableExtra("produto");
+                            Produto produto = intent.getParcelableExtra("produto");
                             listaProdutos.add(produto);
-                            //listaAdapter.notifyDataSetChanged();
                             adapter.notifyDataSetChanged();
                         }
                     }
@@ -88,32 +79,11 @@ public class ListaProdutoActivity extends AppCompatActivity {
 
     private void popularLista(){
         listaProdutos = new ArrayList<>();
-        listaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaProdutos);
         adapter = new ProdutoAdapter(this, listaProdutos);
-       // listaViewProdutos.setAdapter(listaAdapter);
         listaViewProdutos.setAdapter(adapter);
-
-     /*   String[] nomes = getResources().getStringArray(R.array.nomes);
-        String[] codigos = getResources().getStringArray(R.array.codigos);
-        String[] tipos = getResources().getStringArray(R.array.tipos);
-        int[] risco = getResources().getIntArray(R.array.tipo_risco);
-
-        Produto produto = null;
-        ArrayList<Produto> produtos = new ArrayList<>();
-
-        for (int cont=0; cont < nomes.length; cont++){
-            produtos.add(new Produto(nomes[cont],codigos[cont], ProdutoRisco.values()[risco[cont]], new TipoProduto(tipos[cont]),false));
-        }
-
-      //  ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtos);
-        ProdutoAdapter adapter = new ProdutoAdapter(this, produtos);
-        listaViewProdutos.setAdapter(adapter); */
     }
 
     public void menuCadastro(View view){
-    //    Intent intent = new Intent(this, ProdutoActivity.class);
-      //  laucherNovoProduto.launch(intent);
-        //ProdutoActivity.nova(this);
         ProdutoActivity.nova(this, laucherNovoProduto);
     }
 }
