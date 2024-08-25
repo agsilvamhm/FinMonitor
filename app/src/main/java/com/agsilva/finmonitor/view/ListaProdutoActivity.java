@@ -37,7 +37,7 @@ public class ListaProdutoActivity extends AppCompatActivity {
     private ListView listaViewProdutos;
     private ArrayList<Produto> listaProdutos ;
     private  ArrayAdapter<Produto> listaAdapter ;
- // ProdutoAdapter adapter;
+    private ProdutoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +75,12 @@ public class ListaProdutoActivity extends AppCompatActivity {
                            // String risco = bundle.getString(String.valueOf(ProdutoActivity.RISCO));
                           //  String tipo = bundle.getString(ProdutoActivity.TIPO);
                           //  String ativo = bundle.getString(String.valueOf(ProdutoActivity.ATIVO));
-                            Produto produto = new Produto(nome,codigo);
+                            Produto produto = new Produto(nome,codigo, ProdutoRisco.ALTO, new TipoProduto("Tese"), true);
+
                           //  Produto produto = (Produto) intent.getSerializableExtra("produto");
                             listaProdutos.add(produto);
-                            listaAdapter.notifyDataSetChanged();
-                            //adapter.notifyDataSetChanged();
+                            //listaAdapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -88,8 +89,9 @@ public class ListaProdutoActivity extends AppCompatActivity {
     private void popularLista(){
         listaProdutos = new ArrayList<>();
         listaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaProdutos);
-       // adapter = new ProdutoAdapter(this, listaProdutos);
-        listaViewProdutos.setAdapter(listaAdapter);
+        adapter = new ProdutoAdapter(this, listaProdutos);
+       // listaViewProdutos.setAdapter(listaAdapter);
+        listaViewProdutos.setAdapter(adapter);
 
      /*   String[] nomes = getResources().getStringArray(R.array.nomes);
         String[] codigos = getResources().getStringArray(R.array.codigos);
