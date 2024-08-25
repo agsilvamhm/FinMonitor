@@ -1,5 +1,6 @@
 package com.agsilva.finmonitor.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,12 @@ import com.agsilva.finmonitor.util.ProdutoAdapter;
 import java.util.ArrayList;
 
 public class ListaProdutoActivity extends AppCompatActivity {
+
+    public static void nova(AppCompatActivity activity){
+        Intent intent = new Intent(activity, ListaProdutoActivity.class);
+        activity.startActivity(intent);
+    }
+
     private ListView listaViewProdutos;
 
     @Override
@@ -64,5 +71,9 @@ public class ListaProdutoActivity extends AppCompatActivity {
       //  ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtos);
         ProdutoAdapter adapter = new ProdutoAdapter(this, produtos);
         listaViewProdutos.setAdapter(adapter);
+    }
+
+    public void menuCadastro(View view){
+        ProdutoActivity.nova(this);
     }
 }

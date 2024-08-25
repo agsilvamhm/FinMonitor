@@ -11,8 +11,21 @@
         android:id="@+id/buttonSobre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:onClick="menuSobre"
         android:text="@string/sobre"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonListar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:onClick="menuListaProduto"
+        android:text="@string/listar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSobre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

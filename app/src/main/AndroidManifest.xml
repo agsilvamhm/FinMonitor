@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".SobreActivity"
+            android:name=".view.SobreActivity"
             android:exported="false" />
         <activity
             android:name=".view.ListaProdutoActivity"

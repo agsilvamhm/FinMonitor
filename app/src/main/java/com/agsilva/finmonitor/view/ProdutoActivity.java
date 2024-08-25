@@ -1,5 +1,6 @@
 package com.agsilva.finmonitor.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,11 @@ import com.agsilva.finmonitor.R;
 import java.util.ArrayList;
 
 public class ProdutoActivity extends AppCompatActivity {
+
+    public static void nova(AppCompatActivity activity){
+        Intent intent = new Intent(activity, ProdutoActivity.class);
+        activity.startActivity(intent);
+    }
 
     private Spinner spinnerTipo;
     private EditText editNome, editCodigo;

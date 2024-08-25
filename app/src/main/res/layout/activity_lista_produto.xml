@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="menuCadastro"
     tools:context=".view.ListaProdutoActivity">
 
     <LinearLayout
@@ -12,10 +13,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/buttonCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="menuCadastro"
+            android:text="@string/cadastrar" />
+
         <ListView
 
             android:id="@+id/listaViewProdutos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="564dp"></ListView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,4 +28,6 @@
     <string name="nome__aluno">Adalberto Gonçalves da Silva</string>
     <string name="email_aluno">adalbertosilva@alunos.utfpr.edu.br</string>
     <string name="texto_sobre">Controle de investimentos financeiros por produto e intituições.</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="listar">Listar Produtos</string>
 </resources>

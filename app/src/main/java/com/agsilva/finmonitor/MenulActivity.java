@@ -9,6 +9,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.agsilva.finmonitor.view.ListaProdutoActivity;
+import com.agsilva.finmonitor.view.ProdutoActivity;
+import com.agsilva.finmonitor.view.SobreActivity;
+
 public class MenulActivity extends AppCompatActivity {
 
     @Override
@@ -26,4 +30,13 @@ public class MenulActivity extends AppCompatActivity {
     public void menuSobre(View view){
         SobreActivity.nova(this);
     }
+
+    public void menuCadastro(View view){
+        ProdutoActivity.nova(this);
+    }
+
+    public void menuListaProduto(View view){
+        ListaProdutoActivity.nova(this);
+    }
+
 }
