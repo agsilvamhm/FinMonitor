@@ -30,4 +30,7 @@
     <string name="texto_sobre">Controle de investimentos financeiros por produto e intituições.</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="listar">Listar Produtos</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
 </resources>

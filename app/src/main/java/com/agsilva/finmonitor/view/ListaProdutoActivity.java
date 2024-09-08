@@ -3,6 +3,8 @@ package com.agsilva.finmonitor.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -86,4 +89,26 @@ public class ListaProdutoActivity extends AppCompatActivity {
     public void menuCadastro(View view){
         ProdutoActivity.nova(this, laucherNovoProduto);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_lista_produto, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int idMenuItem = item.getItemId();
+
+        if (idMenuItem == R.id.menuItemAdicionar){
+            ProdutoActivity.nova(this, laucherNovoProduto);
+            return true;
+       } else if (idMenuItem == R.id.menuItemSobre){
+            SobreActivity.nova(this);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

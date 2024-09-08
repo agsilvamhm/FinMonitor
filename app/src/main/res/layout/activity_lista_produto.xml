@@ -13,13 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonCadastrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="menuCadastro"
-            android:text="@string/cadastrar" />
-
         <ListView
 
             android:id="@+id/listaViewProdutos"

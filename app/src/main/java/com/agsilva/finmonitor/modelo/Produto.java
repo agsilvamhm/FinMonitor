@@ -3,12 +3,21 @@ package com.agsilva.finmonitor.modelo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Comparator;
+
 public class Produto implements Parcelable {
     private String nome;
     private String codigo;
     private ProdutoRisco risco;
     private TipoProduto tipo;
     private Boolean ativado;
+
+    public static Comparator comparator = new Comparator<Produto>(){
+        @Override
+        public int compare(Produto produto1, Produto produto2){
+            return produto1.getNome().compareToIgnoreCase(produto2.getNome());
+        }
+    };
 
     public Produto(String nome, String codigo, ProdutoRisco risco, TipoProduto tipo, Boolean ativado) {
         this.nome = nome;

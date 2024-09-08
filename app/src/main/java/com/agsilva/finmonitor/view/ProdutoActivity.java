@@ -3,6 +3,8 @@ package com.agsilva.finmonitor.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -74,7 +77,7 @@ public class ProdutoActivity extends AppCompatActivity {
         spinnerTipo.setAdapter(adapter);
     }
 
-    public void limpar(View view){
+    public void limpar(){//View view){
         editNome.setText("");
         editCodigo.setText("");
         radioGroup.clearCheck();
@@ -86,7 +89,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
     }
 
-    public void salvar(View view){
+    public void salvar(){//(View view){
          if (editNome.getText().toString().isEmpty()){
              Toast.makeText(this, R.string.nome_vazio, Toast.LENGTH_SHORT).show();
              editNome.requestFocus();
@@ -129,5 +132,27 @@ public class ProdutoActivity extends AppCompatActivity {
     public void cancelar(View view){
           setResult(Activity.RESULT_CANCELED);
           finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_produto, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int idMenuItem = item.getItemId();
+
+        if (idMenuItem == R.id.menuItemSalvar){
+            //ProdutoActivity.nova(this, laucherNovoProduto);
+            salvar();
+            return true;
+        } else if (idMenuItem == R.id.menuItemLimpar){
+            limpar(); //SobreActivity.nova(this);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

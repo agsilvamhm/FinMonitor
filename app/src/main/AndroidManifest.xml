@@ -13,8 +13,9 @@
         android:theme="@style/Theme.FinMonitor"
         tools:targetApi="31">
         <activity
-            android:name=".MenulActivity"
-            android:exported="true">
+            android:name=".PrincipalActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +25,12 @@
 
         <activity
             android:name=".view.SobreActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".view.ListaProdutoActivity"/>
         <activity
             android:name=".view.ListaProdutoActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".PrincipalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +39,8 @@
         </activity>
         <activity
             android:name=".view.ProdutoActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".PrincipalActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
