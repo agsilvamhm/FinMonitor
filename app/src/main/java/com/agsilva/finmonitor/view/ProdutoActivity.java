@@ -36,11 +36,12 @@ public class ProdutoActivity extends AppCompatActivity {
         laucher.launch(intent);
     }
 
+    private ArrayList<String> lista;
     private Spinner spinnerTipo;
     private EditText editNome, editCodigo;
     private RadioGroup radioGroup;
     private CheckBox checkBox;
-    private ProdutoRisco risco ; //= ProdutoRisco.BAIXO;
+    private ProdutoRisco risco ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +61,22 @@ public class ProdutoActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
 
         popularSpinner();
+
+        Produto produto = getIntent().getParcelableExtra("produto");
+        if (produto != null){
+
+            editNome.setText(produto.getNome());
+            editCodigo.setText(produto.getCodigo());
+            checkBox.setChecked(produto.getAtivado());
+            int posicao = lista.indexOf(produto.getTipo());
+            spinnerTipo.setSelection(posicao);
+            radioGroup.check(produto.getRisco().ordinal());
+
+        }
     }
 
     private void popularSpinner(){
-        ArrayList<String> lista = new ArrayList<>();
-
+        lista = new ArrayList<>();
         lista.add("Ações");
         lista.add("Funcos Imobiliarios");
         lista.add("CDB");
